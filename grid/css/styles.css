@@ -1,0 +1,96 @@
+*{
+  
+  margin:0;
+  padding:0;
+  font-family: sans-serif;
+}
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 90px;
+  width: 100%;
+  
+  /* this is what centers your element in the fixed wrapper*/
+  
+
+ 
+  
+  /* just for styling to see the limits */
+  
+}
+
+.nav {
+  width: 100%;
+  height: 80px;
+  
+
+  /* Just for styling */
+  background-color: rgba(0,0,0,0.9);
+  display: flex;
+  align-content: center;  
+  align-items:center;
+  padding-left:20px;
+ 
+  
+}
+
+.nav a{
+  color:white;
+  text-decoration:none;
+  font-size: 20px;
+  
+}
+.nav img{
+  position:absolute;
+  right:0;
+  height:50px;
+  
+  margin-right:25px;
+  cursor:pointer;
+}
+.nav a+a{
+  margin-left:25px
+}
+
+.corpo{
+  height:1400px;
+  width:100%;
+
+  background-image: url("https://wallpaperaccess.com/full/187161.jpg") ;
+  
+  background-image: no-repeat;
+  background-image: center;
+  background-size:cover;
+   
+   
+    
+   
+}
+.chat{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background-image: url("https://upload.wikimedia.org/wikipedia/commons/6/6a/Godot_icon.svg") ;
+  background-size: cover;
+   background-position: center; /* Center the image */
+  background-repeat: no-repeat; 
+  
+  border-radius:50%;
+  height:60px;
+  width:60px;
+  cursor:pointer; 
+  
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+ 
+  
+  background-color: white;
+  
+  
+}
+
+
