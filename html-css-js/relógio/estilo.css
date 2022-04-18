@@ -1,0 +1,48 @@
+.sessao {
+    margin-top: 20%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;    
+    
+}
+body{
+
+    background-color:rgb(171, 196, 171);
+}
+
+.visor{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: goldenrod solid 10px;
+    border-radius: 10px;
+    height: 90px;
+    width: 200px;
+    background-color: honeydew ;
+    font-family: 'New Tegomin', serif;
+    font-size: 30px;
+}
+
+.btn{
+    border: none;
+    background-color: #008000;
+    
+    color: #fff;
+    height: 35px;
+    width: 100px;
+    margin-top: 10px;
+    border-radius: 5px;
+    font-family: 'Ubuntu', sans-serif;
+    cursor: pointer;
+}
+
+
+#stop{
+    background-color: #fff;
+    
+    color:#008000;
+    cursor:not-allowed;
+
+}

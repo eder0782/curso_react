@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <!-- Meta tags Obrigatórias -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <!-- Bootstrap CSS -->
+   -  <link rel="stylesheet" href="style.css">
+   <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Handlee&family=Permanent+Marker&display=swap" rel="stylesheet">
+    <title>Olá, mundo!</title>
+  </head>
+  <body>
+    <div class="corpo">
+      <div >
+        <h1 >Calculadora</h1>
+        <label >Digite o valor 1:</label>
+
+        <br>
+        <input id="val1" type="number"  value="0">      
+        <br>
+        <label >Digite o valor 2:</label>
+
+        <br>
+        <input id="val2" type="number" value="0">      
+        <br>
+        <div class="btns">
+          <button  onclick="somar()" class="botao">Somar</button>
+          <button  onclick="limpar()" class="botao">Limpar</button>
+         </div>
+      </div>
+      <div class="result" id="result">
+        <p>Resultado: </p>
+        <p class="resultVal" id="resultVal">0</p>
+      </div>
+    </div>	
+    <script type="text/javascript">
+      function somar(){
+        let val1 = document.getElementById("val1").value;
+        let val2 = document.getElementById("val2").value;
+        
+        let resultado =document.getElementById("resultVal");
+        let soma = parseFloat(val1) + parseFloat(val2);
+        console.log("resultado: "+ soma);
+        resultado.innerHTML=soma;      
+
+        
+
+      }
+      function limpar(){
+        document.getElementById("val1").value="0";
+        document.getElementById("val2").value ="0";
+        document.getElementById("resultVal").innerHTML="0"
+      }
+      let val1 = document.getElementById("val1");
+      let val2 = document.getElementById("val2");
+
+      function eventos(objeto,evento,funcao) {
+         objeto.addEventListener(evento,funcao);
+      }
+
+     eventos(val1,"click",()=>{
+       if(val1.value=="0")
+       val1.value = "";
+     });
+     eventos(val2,"click",()=>{
+       if(val2.value =="0")
+       val2.value = "";
+     });
+
+     eventos(val1,"blur",()=>{
+       if(val1.value ==""){
+         val1.value ="0";
+       }
+     })
+
+     eventos(val2,"blur",()=>{
+       if(val2.value ==""){
+         val2.value ="0";
+       }
+     })
+    </script>
+
+ </body>
+</html>

@@ -1,0 +1,89 @@
+body{
+    background-color: #ccc;
+    text-align: center;
+        
+}
+*{
+    margin-top: 10px;
+    font-family: 'Handlee', cursive;
+    
+}
+
+label{
+
+    font-style: italic;
+    
+}
+
+.corpo{
+
+    border: -20px;
+    margin-left: 10%;
+    margin-right: 10%;
+    border: 5px solid burlywood;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;   
+    flex-direction: column; 
+    align-items: center;
+
+}
+
+input{
+    border-radius: 5px;
+    color: lightseagreen;
+    background-color: lightyellow;
+    text-align: right;
+}
+
+
+
+.botao{
+    color: black;
+    font-weight: bold;
+    background-color: white;
+    border-color: white;
+    width: 100px;
+    height: 30px;
+    border-radius: 20px;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: 0.4s;       
+    
+}
+
+.botao:hover{
+    color: white;
+    background-color: lightcoral;
+    border-color: lightcoral;
+}
+
+/*OCULTANDO AS SETINHAS DO CAMPO TIPO NÚMERO*/
+input[type=number]::-webkit-inner-spin-button { 
+    -webkit-appearance: none;
+    
+}
+input[type=number] { 
+   -moz-appearance: textfield;
+   appearance: textfield;
+
+}
+
+.result{
+    margin-top: 50px;
+    border:10px;
+    width: 200px;
+    background-color: darksalmon;
+    height: 30px;
+    
+    padding-left: 15px;
+    padding-right: 15px;
+    min-width: 150px;    
+    border-radius: 10px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+}

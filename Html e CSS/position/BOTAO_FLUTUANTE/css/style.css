@@ -1,0 +1,13 @@
+.chat{
+    background-color: aqua;
+
+    /*ARREDONDANDO A DIV*/
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    
+
+}
