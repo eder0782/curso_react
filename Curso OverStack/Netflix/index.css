@@ -1,0 +1,199 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: sans-serif;
+    /*REMOVENDO O TRACEJADO DOS LINKS*/
+    text-decoration: none;
+    /*
+    REMOVENDO AS BOLIHAS DE APARECEM NA LISTA
+    */
+    list-style: none;
+}
+:root {
+  
+    --minha-cor-fundo: rgba(0, 0, 0, 0.7);
+    --fonte-size-um:13px;
+    --color-fonte-dois:#8c8c8c;
+    --font-size-dois : 15px;
+    
+  }
+body{
+    background-image: url("img/BR-pt-20220411-popsignuptwoweeks-perspective_alpha_website_medium.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: left;
+    height: 1100px;
+    width: auto;
+}
+a:hover{
+    text-decoration: underline;
+}
+button:hover{
+    cursor: pointer;
+}
+.container{
+    height: 1100px;
+    width: auto;
+    display: flex;
+    flex-direction:column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+    
+
+.header{
+    width: 100%;
+    height: 90px;
+    
+    background-color: var(--minha-cor-fundo);
+    display: flex;
+    align-items: center;
+}
+.header img{
+    margin-left: 25px;
+
+    background-size: 167px 45px;
+
+}
+.login{
+    height: 660px;
+    width: 450px;
+    
+    
+    background-color: rgba(0, 0, 0, 0.8);
+    border: none;
+    border-radius: 5px;
+}
+.interlogin{
+    height: 100%;
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    color: var(--color-fonte-dois);
+    margin-left: 55px;
+    margin-right: 55px; 
+    margin-top: 50px;  
+}
+.interlogin h1{
+
+    color: whitesmoke;
+    font-size: 29px;
+    margin-bottom: 30px;
+}
+.interlogin input{
+
+    border: none;
+    height: 50px;
+    border-radius: 3px;
+    padding-left:20px ;
+    margin-bottom: 15px;
+}
+.interlogin button{
+    border: none;
+    background-color: red;
+    height: 50px;
+    border-radius: 3px;
+    color: whitesmoke;
+    font-size: 15px;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 15px;
+   
+}
+.interlogin .box{
+    height: 25px;
+    width: auto;
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    font-size: var(--fonte-size-um);
+    margin-bottom: 50px;
+}
+.interlogin .box a{
+    color: var(--color-fonte-dois);
+    
+}
+.interlogin .check{
+    height: 100%;
+    width: auto;
+    display: flex;
+    flex-direction: row;
+    
+}
+.interlogin .check label{
+  margin-left: 10px;
+}
+.interlogin .social{
+    height: 216;
+    font-size: var(--fonte-size-um);
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    
+}
+.interlogin .social .new{
+    padding-top: 15px;
+    font-size: var(--font-size-dois);
+}
+.interlogin .social .new{
+    padding-top: 15px;
+}
+.interlogin .social .new a{
+    color: whitesmoke;
+}
+.interlogin .social .footer-social{
+    padding-top: 15px;
+}
+.interlogin .social .footer-social a{
+    color: blue;
+}
+.facebook{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+}
+.facebook label{
+    margin-left: 10px;
+}
+.footer{
+    height: 258px;
+    width: 100%;
+    background-color: var(--minha-cor-fundo);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content_footer{
+
+    font-size: var(--fonte-size-um);
+    color: var(--color-fonte-dois);   
+    
+    height: 100%;
+    width: 1000px;
+}
+.content_footer .duvidas{
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 15px;
+}
+.content_footer ul{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+.content_footer ul li{
+    width: 250px;
+    margin-top: 15px;
+    
+}
+
+.content_footer ul li a{
+    color: var(--color-fonte-dois);
+}

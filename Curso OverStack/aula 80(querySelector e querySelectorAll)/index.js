@@ -1,0 +1,1 @@
+let inicio = new Controller();
