@@ -11,7 +11,8 @@ chat.addEventListener("click",()=>{
         memoria =memo.textContent;
         memo.textContent="";
         atend.style.width="0";
-       
+        enviar.innerText="";
+        
         atend.style.visibility="hidden";
 
     }
@@ -21,6 +22,7 @@ chat.addEventListener("click",()=>{
         atend.style.width="200px";
         
         atend.style.visibility="visible";
+        enviar.innerText="Enviar";
         memo.textContent = memoria;
 
     }
