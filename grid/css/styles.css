@@ -122,6 +122,7 @@
   color: black;
   margin-bottom: 10px;
   resize: none;
+  overflow: scroll;
 
 }
 .atend-footer{

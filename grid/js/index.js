@@ -26,6 +26,7 @@ chat.addEventListener("click",()=>{
         memo.textContent = memoria;
 
     }
+    memo.scrollBy(1000,0);
 })
 
 enviar.addEventListener("click",()=>{
