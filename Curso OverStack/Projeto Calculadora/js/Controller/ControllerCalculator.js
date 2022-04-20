@@ -101,6 +101,7 @@ class ControllerCalculator{
         //console.log(this._listaElementos);
         this._resultado=true;
         this.addDisplay();
+        //this._display.scrollBy(0,0);
 
     }
     inverter(){
