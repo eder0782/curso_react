@@ -7,14 +7,16 @@ class UserController{
 
     }
     inicialize(){
-        let user1 = new User(0,'img/icon.jpg',"Eder Santo","eder@gmail.com","(92)99623-6044",'12345',
-        true);
-        let user2 = new User(1,'img/icon.jpg',"Davi Santo","davi@gmail.com","(92)99623-5844",'12345',
-        true);
-        this.addLine(user1);
-        this.addLine(user2);
-        this.attUser(user1.getId(),user1);
-        this.attUser(user2.getId(),user2);
+        if(JSON.stringify(this._users)=='{}'){
+            let user1 = new User(0,'img/icon.jpg',"Eder Santo","eder@gmail.com","(92)99623-6044",'12345',
+            true);
+            let user2 = new User(1,'img/icon.jpg',"Davi Santo","davi@gmail.com","(92)99623-5844",'12345',
+            true);
+            this.addLine(user1);
+            this.addLine(user2);
+            this.attUser(user1.getId(),user1);
+            this.attUser(user2.getId(),user2);
+        }
     }
     addEvenButtons(){
         //EVENTO DO BOTÃO DE ADICIONAR NOVO USUÁRIO
@@ -57,6 +59,7 @@ class UserController{
         document.querySelectorAll('.users tr').forEach((v,i)=>{
             //PULA A TR 0 POIS ela é o título
             let dataset  = v.dataset.user;
+            // console.log(v.dataset.user);
             if(i>0){
                 if(JSON.parse(dataset)._id== elements.id.value){
                     // console.log("sim");
@@ -65,8 +68,9 @@ class UserController{
             }       
         }) 
         let userObject = trSelected.dataset.user;
+        
         let user = new User(elements.id.value,'',elements.name.value,elements.email.value,elements.phone.value,
-            userObject._password,elements.admin.value);
+            userObject._password,elements.admin.checked);
 
         if(elements.icon.value ==''){
             // this.addImage(register)
@@ -94,12 +98,12 @@ class UserController{
 
     attRows(tr,user){
         console.log(tr);
-        tr.dataset.user = user;
+        tr.dataset.user = JSON.stringify(user);
         tr.querySelector('.table-icon img').src = user.getImage();
         tr.querySelector('.table-name').innerHTML = user.getName();
         tr.querySelector('.table-email').innerHTML = user.getEmail();
         tr.querySelector('.table-phone').innerHTML = user.getPhone();
-        if(user.getAdmin()){
+        if(user.getAdmin()==true){
             tr.querySelector('.table-admin').innerHTML = 'Sim'
         }else{
             tr.querySelector('.table-admin').innerHTML = 'Não'
@@ -155,16 +159,19 @@ class UserController{
         document.querySelectorAll(".edit-btn")[document.querySelectorAll(".edit-btn").length-1].addEventListener("click",
         ()=>{
             document.querySelector(".form-edit").style.display ="flex";
+            
+            // console.log(JSON.stringify(tr.dataset.user));
             let objUser = JSON.parse(tr.dataset.user);
+
             // let objUser = tr.dataset.user;
             // let formEl = document.querySelector("form.edit");
             // let elements = formEl.elements;
             let nUser = new User(objUser._id,objUser._image,objUser._name,objUser._email,objUser._phone,
                 objUser._password,objUser._admin);
-                // console.log(nUser);
+                
                 // id,image,name,email,phone,password,admin
 
-            // console.log(nUser);
+            
             let formEl = document.querySelector('form.edit');
             let elements = formEl.elements;
             elements.id.value = nUser.getId();
@@ -211,18 +218,18 @@ class UserController{
         
         //VERIFICA SE A PROPRIEDADE THIS.USER ESTÁ VAZIA
         //PARA ISSO USAMOS A PROPRIEDADE JSON.STRINGIFY QUE CONVERTE O OBJETO EM UMA STRING
-        // console.log(this._users);
+        
         if(JSON.stringify(this._users)=='{}'){  
             user = new User(0,'',register.name,
                 register.email,register.phone,register.password,
                 register.admin);            
-            console.log("vazio");  
+           
         }
         else{
             // alert("cheio");
             let lastUserObj = Object.values(this._users)[Object.values(this._users).length -1];
             // let lastUser = new User(lastUserObj._id,lastUserObj._name,lastUserObj._photo,lastUserObj._email,lastUserObj._phone,lastUserObj._admin,lastUserObj._password)
-            user = new User(lastUserObj._id+1,'',register.name,
+            user = new User(parseInt(lastUserObj._id)+1,'',register.name,
             register.email,register.phone,register.password,
             register.admin); 
         }
@@ -232,14 +239,14 @@ class UserController{
             this.addLine(user);
             //ADICIONAR USUÁRIO A PROPRIEDADE
             this.attUser(user.getId(),user);
-            //console.log("vazio");
+           
             
         }
         else{
             //QUANDO UMA FUNÇÃO RETORNA UM PROMISE UTULIZA-SE A 
             //FUNÇÃO THEN PARA TRATAR O RESULTADO DELA
             this.addImage(formReg.icon.files[0]).then((result)=>{
-                // console.log(result);
+             
                 user.setPhoto(result);
                 this.addLine(user);
                 //ADICIONAR USUÁRIO A PROPRIEDADE
