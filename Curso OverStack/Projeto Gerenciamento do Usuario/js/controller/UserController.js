@@ -3,9 +3,19 @@ class UserController{
         this.addEvenButtons();
         //ESSA VARIÁVEL IRÁ ABRIGAR UMA LISTA DE USUÁRIOS
         this._users={};
+        this.inicialize();
 
     }
-
+    inicialize(){
+        let user1 = new User(0,'img/icon.jpg',"Eder Santo","eder@gmail.com","(92)99623-6044",'12345',
+        true);
+        let user2 = new User(1,'img/icon.jpg',"Davi Santo","davi@gmail.com","(92)99623-5844",'12345',
+        true);
+        this.addLine(user1);
+        this.addLine(user2);
+        this.attUser(user1.getId(),user1);
+        this.attUser(user2.getId(),user2);
+    }
     addEvenButtons(){
         //EVENTO DO BOTÃO DE ADICIONAR NOVO USUÁRIO
         document.querySelector(".add").addEventListener("click",()=>{
@@ -15,23 +25,89 @@ class UserController{
         //EVENTO DO BOTÃO DE FECHAR TELAS MODAIS DE ADD 
         document.querySelectorAll(".close")[0].addEventListener("click",()=>{
             //FECHANDO A TELA DE ADD
-            document.querySelector(".form-add").style.display="none";
-            
+           
+            this.formCloseClear(document.querySelector(".form-add"),document.querySelector(".register"));    
 
         });
 
         document.querySelectorAll(".close")[1].addEventListener("click",()=>{
             //FECHANDO A TELA DE EDITE
-            document.querySelector(".form-edit").style.display="none";
+           // document.querySelector(".form-edit").style.display="none";
+            this.formCloseClear(document.querySelector(".form-edit"),document.querySelector(".edit"));    
+
 
         });
-        document.querySelector(".check").addEventListener("click",()=>{
+        //BOTÃO DE CONFIRMAÇÃO DA TELA DE REGISTRO
+        document.querySelectorAll(".check")[0].addEventListener("click",()=>{
             this.register();
+        })
+        //BOTÃO DE CONFIRMAÇÃO DA TELA DE EDIT
+        document.querySelectorAll(".check")[1].addEventListener("click",()=>{
+            this.editRegister();
+            this.formCloseClear(document.querySelector(".form-edit"),document.querySelector(".edit")); 
         })
            
 
     }
 
+    editRegister(){
+        let formEl = document.querySelector('.edit');
+        let elements = formEl.elements;
+        let trSelected;
+        document.querySelectorAll('.users tr').forEach((v,i)=>{
+            //PULA A TR 0 POIS ela é o título
+            let dataset  = v.dataset.user;
+            if(i>0){
+                if(JSON.parse(dataset)._id== elements.id.value){
+                    // console.log("sim");
+                    trSelected=  v;                    
+                }
+            }       
+        }) 
+        let userObject = trSelected.dataset.user;
+        let user = new User(elements.id.value,'',elements.name.value,elements.email.value,elements.phone.value,
+            userObject._password,elements.admin.value);
+
+        if(elements.icon.value ==''){
+            // this.addImage(register)
+            user.setPhoto('img/icon.jpg');
+            this.attRows(trSelected, user);
+            //ADICIONAR USUÁRIO A PROPRIEDADE
+            this.attUser(user.getId(),user);
+            //console.log("vazio");
+            
+        }
+        else{
+            //QUANDO UMA FUNÇÃO RETORNA UM PROMISE UTULIZA-SE A 
+            //FUNÇÃO THEN PARA TRATAR O RESULTADO DELA
+            this.addImage(elements.icon.files[0]).then((result)=>{
+                // console.log(result);
+                user.setPhoto(result);
+                this.attRows(trSelected, user);;
+                //ADICIONAR USUÁRIO A PROPRIEDADE
+                this.attUser(user.getId(),user);
+            },(e)=>{
+                console.error(e);
+            } )
+        }
+    }
+
+    attRows(tr,user){
+        console.log(tr);
+        tr.dataset.user = user;
+        tr.querySelector('.table-icon img').src = user.getImage();
+        tr.querySelector('.table-name').innerHTML = user.getName();
+        tr.querySelector('.table-email').innerHTML = user.getEmail();
+        tr.querySelector('.table-phone').innerHTML = user.getPhone();
+        if(user.getAdmin()){
+            tr.querySelector('.table-admin').innerHTML = 'Sim'
+        }else{
+            tr.querySelector('.table-admin').innerHTML = 'Não'
+        }
+        
+
+    }
+    
     addImage(image){
         //PARA CARREGAR UMA ARQUIVO, É NECESSÁRIO USAR UMA FUNÇÃO ASSÍNCRONA
         //UMA VEZ QUE O PROCESSO PODE SER DEMORADO, PARA ISSO UTILIZAMOS A FUNÇÃO PROMISSE
