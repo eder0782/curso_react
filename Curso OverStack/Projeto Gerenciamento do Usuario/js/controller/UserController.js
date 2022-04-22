@@ -50,9 +50,11 @@ class UserController{
 
     addLine(user){
         let tr = document.createElement('tr');
+        
 
         //ARMAZENANDO OS USUÁRIOS EM UM DATA SETE PARA PODER EDITAR E CONSULTAR DEPOIS
         tr.dataset.user = JSON.stringify(user);
+        // console.log(Object.values(tr.dataset.user));
         tr.innerHTML = `
         <td class='table-icon'>${user.getId()}</td>
         <td class='table-icon'><img src='${user.getImage()}' alt='Ícone'></td>
@@ -78,18 +80,22 @@ class UserController{
         ()=>{
             document.querySelector(".form-edit").style.display ="flex";
             let objUser = JSON.parse(tr.dataset.user);
+            // let objUser = tr.dataset.user;
             // let formEl = document.querySelector("form.edit");
             // let elements = formEl.elements;
             let nUser = new User(objUser._id,objUser._image,objUser._name,objUser._email,objUser._phone,
                 objUser._password,objUser._admin);
+                // console.log(nUser);
+                // id,image,name,email,phone,password,admin
+
             // console.log(nUser);
             let formEl = document.querySelector('form.edit');
             let elements = formEl.elements;
-            elements.id.value = user.getId();
-            elements.name.value = user.getName();
-            elements.email.value = user.getEmail();
-            elements.phone.value = user.getPhone();
-            elements.admin.checked = user.getAdmin();
+            elements.id.value = nUser.getId();
+            elements.name.value = nUser.getName();
+            elements.email.value = nUser.getEmail();
+            elements.phone.value = nUser.getPhone();
+            elements.admin.checked = nUser.getAdmin();
             
         })
     }

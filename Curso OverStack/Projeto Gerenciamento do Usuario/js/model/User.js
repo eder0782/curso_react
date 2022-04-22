@@ -3,7 +3,7 @@ class User{
         this._id = id;
         this._image = image;
         this._name = name;
-        this.__email = email;
+        this._email = email;
         this._phone = phone;
         this._password = password;
         this._admin = admin;
@@ -22,7 +22,7 @@ class User{
         return this._name;
     }
     getEmail(){
-        return this.__email;
+        return this._email;
     }
     getPhone(){
         return this._phone;
