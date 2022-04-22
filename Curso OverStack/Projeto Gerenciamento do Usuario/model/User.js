@@ -34,7 +34,7 @@ class User{
         else
         return "senha incorreta";
     }
-    getAdim(){
+    getAdmin(){
         return this._admin;
     }
     getDate(){
