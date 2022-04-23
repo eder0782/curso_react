@@ -7,16 +7,31 @@ class UserController{
 
     }
     inicialize(){
-        if(JSON.stringify(this._users)=='{}'){
-            let user1 = new User(1,'img/icon.jpg',"Eder Santo","eder@gmail.com","(92)99623-6044",'12345',
-            true);
-            let user2 = new User(2,'img/icon.jpg',"Davi Santo","davi@gmail.com","(92)99623-5844",'12345',
-            true);
-            this.addLine(user1);
-            this.addLine(user2);
-            this.attUser(user1.getId(),user1);
-            this.attUser(user2.getId(),user2);
+
+        //SE NÃO EXISTIR A CHAVE USERS NO LOCALSTORAGE ELA É CRIADA
+        if (!localStorage.getItem('users')) {
+            localStorage.setItem('users','{}');            
         }
+        this._users = JSON.parse(localStorage.getItem('users'));
+        // console.log(this._users);
+        Object.values(this._users).forEach((v)=>{
+            // console.log(v);
+            let user = new User(v._id,v._image,v._name,v._email,v._phone,
+                v._password,v._admin);   
+            this.addLine(user);
+        })
+        
+
+        // if(JSON.stringify(this._users)=='{}'){
+        //     let user1 = new User(1,'img/icon.jpg',"Eder Santo","eder@gmail.com","(92)99623-6044",'12345',
+        //     true);
+        //     let user2 = new User(2,'img/icon.jpg',"Davi Santo","davi@gmail.com","(92)99623-5844",'12345',
+        //     true);
+        //     this.addLine(user1);
+        //     this.addLine(user2);
+        //     this.attUser(user1.getId(),user1);
+        //     this.attUser(user2.getId(),user2);
+        // }
     }
     addEvenButtons(){
         //EVENTO DO BOTÃO DE ADICIONAR NOVO USUÁRIO
@@ -171,6 +186,7 @@ class UserController{
                 let nUser = new User(objUser._id,objUser._image,objUser._name,objUser._email,objUser._phone,
                     objUser._password,objUser._admin); 
                 delete this._users[nUser.getId()];
+                localStorage.setItem('users',JSON.stringify(this._users));
                 tr.replaceWith('');
             }
         })
@@ -183,6 +199,7 @@ class UserController{
 
     attUser(key,value){
         this._users[key]=value;
+        localStorage.setItem('users',JSON.stringify(this._users));
     }
 
     register(){
