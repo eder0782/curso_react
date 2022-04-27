@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import Rotas from './routes';
+import { EstiloGlobal } from './styles/styles';
 // import './index.css';
 
 // import reportWebVitals from './reportWebVitals';
@@ -8,7 +9,10 @@ import Rotas from './routes';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+    <>
+    <EstiloGlobal/>
     <Rotas />
+    </>
   </React.StrictMode>
 );
 

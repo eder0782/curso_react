@@ -1,9 +1,10 @@
 import {Link} from 'react-router-dom';
+import {H1} from "./styleHome.js";
 
 function Home(){
     return(
         <div>
-            <h1>Página Home</h1>
+            <H1>Página Home</H1>
        
 
         </div>
